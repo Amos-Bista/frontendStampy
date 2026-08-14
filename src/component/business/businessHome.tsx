@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CreateOffersForm from '../form/createOffersForm'
 import OffersTable from '../tables/offersTable';
 import CustomersTable from '../tables/customersTable';

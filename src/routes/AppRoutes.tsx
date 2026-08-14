@@ -1,6 +1,5 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/dashboard";
-import BusinessHome from "../component/business/businessHome";
 import OfferQR from "../pages/offerQR";
 import ClaimStamp from "../pages/claimStamp";
 import CustomerAuth from "../pages/customerAuth";

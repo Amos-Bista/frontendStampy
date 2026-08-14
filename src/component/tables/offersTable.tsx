@@ -22,6 +22,7 @@ export default function OffersTable() {
 
     // 1. Simplified state to hold the selected offer ID string directly
     const [offerId, setOfferId] = useState<string>("");
+    console.log("Selected Offer ID:", offerId); // Debugging log
 
     const navigate = useNavigate();
     const businessId = "6891b4d4f5f5d6c32cde1234";

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import OfferCard, { type Offer } from '../component/cards/offerCard';
@@ -53,7 +53,7 @@ const OfferQR = () => {
         );
     }
 
-    const APP_URL = import.meta.env.PHONE_APP_URL || window.location.origin;
+    // const APP_URL = import.meta.env.PHONE_APP_URL || window.location.origin;
     // Generate the customer claim link encoded inside the QR Code
     const targetBusinessId = businessId || offer.businessId;
     const claimUrl = `${window.location.origin}/stamp/${targetBusinessId}/${offer._id}`;
