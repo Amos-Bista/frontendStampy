@@ -10,8 +10,9 @@ const createOfferSchema = z.object({
     businessId: z.string().min(1, "Business ID is required"),
     description: z.string().optional(),
     image: z.string().optional(),
-    requiredStamps: z.coerce.number().min(1),
-    expiryDate: z.string().optional(),
+    requiredStamps: z.number({
+        message: "Required stamps is required",
+    }).min(1, "Required stamps must be at least 1"), expiryDate: z.string().optional(),
     isActive: z.boolean().optional(),
 });
 
@@ -33,7 +34,7 @@ export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
             description: "test",
             image: "",
             requiredStamps: 1,
-            // expiryDate: "",
+            expiryDate: "",
             isActive: true,
         },
     });
@@ -93,7 +94,7 @@ export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
                     </div>
 
                     {/* Business ID */}
-                    <div className="md:col-span-2">
+                    {/* <div className="md:col-span-2">
                         <label className="block mb-2 font-medium">Business ID</label>
                         <input
                             {...register("businessId")}
@@ -103,7 +104,7 @@ export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
                         <p className="text-red-500 text-sm mt-1">
                             {errors.businessId?.message}
                         </p>
-                    </div>
+                    </div> */}
 
                     {/* Required Stamps */}
                     <div>
