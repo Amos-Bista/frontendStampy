@@ -3,15 +3,9 @@ import { navigation } from "./navigation";
 import SidebarItem from "./sidebarItems";
 import { useNavigate } from "react-router-dom";
 
-interface Props {
-    open?: boolean;
-    onClose: () => void;
-}
 
-const Sidebar = ({
-    open,
-    onClose,
-}: Props) => {
+
+const Sidebar = () => {
 
     const navigate = useNavigate();
 
@@ -23,7 +17,6 @@ const Sidebar = ({
         localStorage.removeItem("businessUser");
 
         // Close sidebar
-        onClose();
 
         // Redirect to login
         navigate("/");

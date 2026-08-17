@@ -16,8 +16,8 @@ const createOfferSchema = z.object({
 });
 
 
-const businessID = localStorage.getItem("businessId")
-const token = localStorage.getItem("authToken")
+const businessID = localStorage.getItem("businessId") ?? "";
+const token = localStorage.getItem("authToken") ?? "";
 
 export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
     const {

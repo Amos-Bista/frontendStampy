@@ -2,12 +2,6 @@
 import React, { useState } from 'react';
 import {
     Building2,
-    User,
-    Mail,
-    Phone,
-    Lock,
-    Globe,
-    MapPin,
     ArrowRight,
     ArrowLeft,
     CheckCircle2,
@@ -15,6 +9,7 @@ import {
     AlertCircle,
     Eye,
     EyeOff,
+    Lock,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -511,7 +506,7 @@ export default function BusinessAuthWithAPI() {
                             </button>
                             <button
                                 type="button"
-                                onClick={(e) => { setIsLogin(true); setStep(1); setApiError(null); }}
+                                onClick={() => { setIsLogin(true); setStep(1); setApiError(null); }}
                                 className={`flex-1 py-2 text-xs sm:text-sm font-semibold rounded-lg transition ${isLogin ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
                                     }`}
                             >
