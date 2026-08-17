@@ -4,12 +4,33 @@ import OfferQR from "../pages/offerQR";
 import ClaimStamp from "../pages/claimStamp";
 import CustomerAuth from "../pages/customerAuth";
 import CustomerDashboard from "../pages/customersDashboard";
+import MobileResponsiveAuth from "../pages/businessLogin";
+import ProtectedRouteBusiness from "../component/layout/protectedRoutebusiness";
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/OfferQR/:businessId/:offerId" element={<OfferQR />} />
+            <Route path="/" element={<MobileResponsiveAuth />} />
+
+
+            <Route element={<ProtectedRouteBusiness />}>
+
+                <Route
+                    path="/dashboard/:id"
+                    element={<Dashboard />}
+                />
+
+                <Route
+                    path="/OfferQR/:businessId/:offerId"
+                    element={<OfferQR />}
+                />
+
+            </Route>
+
+
+
+            {/* <Route path="/dashboard/:id" element={<Dashboard />} /> */}
+            {/* <Route path="/OfferQR/:businessId/:offerId" element={<OfferQR />} /> */}
 
 
             <Route path="/stamp/:businessId/:offerId" element={<ClaimStamp />} />

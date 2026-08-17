@@ -20,13 +20,25 @@ export default function OffersTable() {
     const [offers, setOffers] = useState<Offer[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // 1. Simplified state to hold the selected offer ID string directly
+    // 1. Simplified state to hold the selected offer ID s
+    // tring directly
     const [offerId, setOfferId] = useState<string>("");
     console.log("Selected Offer ID:", offerId); // Debugging log
 
-    const navigate = useNavigate();
-    const businessId = "6891b4d4f5f5d6c32cde1234";
 
+    useEffect(() => {
+        fetchOffers();
+    }, []);
+
+    const navigate = useNavigate();
+    const businessId = localStorage.getItem('businessId');
+    console.log('Business ID  found in localStorage', businessId);
+
+
+    if (!businessId) {
+        console.error('Business ID not found in localStorage', businessId);
+        return;
+    }
     // 2. Accept the specific offer ID parameter
     const handleNavigate = (selectedOfferId: string) => {
         setOfferId(selectedOfferId); // Set the ID in state
@@ -36,14 +48,21 @@ export default function OffersTable() {
         navigate(`/OfferQR/${businessId}/${selectedOfferId}`, { state: { offerId: selectedOfferId } });
     };
 
-    useEffect(() => {
-        fetchOffers();
-    }, []);
+
 
     async function fetchOffers() {
         try {
             setLoading(true);
-            const { data } = await axios.get(`${API_URL}/api/v1/offers/business/${businessId}`);
+            const token = localStorage.getItem("authToken");
+
+            const { data } = await axios.get(`${API_URL}/api/v1/offers/business`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                },
+            );
             setOffers(data.data);
             console.log("Fetched offers:", data.data);
         } catch (err) {

@@ -1,7 +1,35 @@
+import { LogOut } from "lucide-react";
 import { navigation } from "./navigation";
 import SidebarItem from "./sidebarItems";
+import { useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
+interface Props {
+    open?: boolean;
+    onClose: () => void;
+}
+
+const Sidebar = ({
+    open,
+    onClose,
+}: Props) => {
+
+    const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+        // Clear authentication/session data
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("businessId");
+        localStorage.removeItem("businessUser");
+
+        // Close sidebar
+        onClose();
+
+        // Redirect to login
+        navigate("/");
+    };
+
+
     return (
         <aside className="hidden w-64 border-r bg-white lg:flex lg:flex-col">
 
@@ -22,6 +50,19 @@ const Sidebar = () => {
                     />
                 ))}
 
+                <div className="mt-auto border-t p-4">
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-red-600 transition-all hover:bg-red-50"
+                    >
+                        <LogOut size={20} />
+
+                        <span className="font-medium">
+                            Logout
+                        </span>
+                    </button>
+                </div>
             </nav>
         </aside>
     );

@@ -29,18 +29,41 @@ export default function CustomersTable() {
         try {
             setLoading(true);
 
-            const response = await axios.get(
-                `${API_URL}/api/v1/customers/allCustomers`
+            const token = localStorage.getItem("authToken");
+
+            if (!token) {
+                throw new Error("Authentication token not found");
+            }
+
+            const response = await fetch(
+                `${API_URL}/api/v1/stamps/business/customers`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
 
-            setCustomers(response.data ?? []);
+            const result = await response.json();
 
+            console.log(
+                "Get Customers According to the business:",
+                result
+            );
 
-            console.log("API Response:", response.data);
-            console.log("Customers:", response.data.data);
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message || "Failed to fetch customers"
+                );
+            }
+
+            // IMPORTANT
+            setCustomers(result.data.customers);
+
         } catch (error) {
             console.error("Failed to fetch customers:", error);
-            setCustomers([]);
         } finally {
             setLoading(false);
         }

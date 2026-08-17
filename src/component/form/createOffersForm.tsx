@@ -15,6 +15,10 @@ const createOfferSchema = z.object({
     isActive: z.boolean().optional(),
 });
 
+
+const businessID = localStorage.getItem("businessId")
+const token = localStorage.getItem("authToken")
+
 export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
     const {
         register,
@@ -25,7 +29,7 @@ export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
         resolver: zodResolver(createOfferSchema),
         defaultValues: {
             title: "Test",
-            businessId: "6891b4d4f5f5d6c32cde1234",
+            businessId: businessID,
             description: "test",
             image: "",
             requiredStamps: 1,
@@ -36,7 +40,14 @@ export default function CreateOffersForm({ onClose }: { onClose: () => void }) {
 
     const onSubmit = async (data: z.infer<typeof createOfferSchema>) => {
         try {
-            const res = await axios.post(`${API_URL}/api/v1/offers`, data);
+            const res = await axios.post(`${API_URL}/api/v1/offers`, data,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             onClose();
             alert("Offer Created Successfully!");
             console.log(res.data);

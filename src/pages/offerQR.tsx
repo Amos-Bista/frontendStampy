@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import OfferCard, { type Offer } from '../component/cards/offerCard';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const OfferQR = () => {
     // Read route parameters
@@ -23,11 +23,25 @@ const OfferQR = () => {
     async function fetchOfferDetails() {
         try {
             setLoading(true);
-            const { data } = await axios.get(`${API_URL}/api/v1/offers/${offerId}`);
+
+            const token = localStorage.getItem('authToken');
+
+            if (!token) {
+                console.error('No auth token found for offer details request');
+                setOffer(null);
+                return;
+            }
+
+            const { data } = await axios.get(`${API_URL}/api/v1/offers/${offerId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
             setOffer(data.data);
-            console.log("Fetched offer:", data.data);
+            console.log('Fetched offer:', data.data);
         } catch (err) {
-            console.error("Failed to fetch offer details:", err);
+            console.error('Failed to fetch offer details:', err);
         } finally {
             setLoading(false);
         }
