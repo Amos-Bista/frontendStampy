@@ -6,11 +6,12 @@ import CustomerAuth from "../pages/customerAuth";
 import CustomerDashboard from "../pages/customersDashboard";
 import MobileResponsiveAuth from "../pages/businessLogin";
 import ProtectedRouteBusiness from "../component/layout/protectedRoutebusiness";
+import Home from "../pages/home";
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<MobileResponsiveAuth />} />
+            <Route path="/login" element={<MobileResponsiveAuth />} />
 
 
             <Route element={<ProtectedRouteBusiness />}>
@@ -32,6 +33,7 @@ const AppRoutes = () => {
             {/* <Route path="/dashboard/:id" element={<Dashboard />} /> */}
             {/* <Route path="/OfferQR/:businessId/:offerId" element={<OfferQR />} /> */}
 
+            <Route path="/" element={<Home />} />
 
             <Route path="/stamp/:businessId/:offerId" element={<ClaimStamp />} />
             <Route path="/login" element={<CustomerAuth />} />
