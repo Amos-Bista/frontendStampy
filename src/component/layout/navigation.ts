@@ -44,4 +44,5 @@ export const navigation = [
         path: "/settings",
         icon: Settings,
     },
+
 ];

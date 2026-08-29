@@ -11,7 +11,7 @@ import Home from "../pages/home";
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/login" element={<MobileResponsiveAuth />} />
+            <Route path="/signin" element={<MobileResponsiveAuth />} />
 
 
             <Route element={<ProtectedRouteBusiness />}>

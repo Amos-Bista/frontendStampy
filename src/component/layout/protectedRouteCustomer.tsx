@@ -1,14 +1,14 @@
-import { Navigate, Outlet } from "react-router-dom";
+// import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRouteCustomer = () => {
-    const customerId = localStorage.getItem("customerId");
-    const authToken = localStorage.getItem("authToken");
+// const ProtectedRouteCustomer = () => {
+//     const customerId = localStorage.getItem("customerId");
+//     const authToken = localStorage.getItem("authToken");
 
-    if (!customerId || !authToken) {
-        return <Navigate to="/" replace />;
-    }
+//     if (!customerId || !authToken) {
+//         return <Navigate to="/" replace />;
+//     }
 
-    return <Outlet />;
-};
+//     return <Outlet />;
+// };
 
-export default ProtectedRouteCustomer;
+// export default ProtectedRouteCustomer;
