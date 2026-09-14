@@ -35,7 +35,6 @@ export default function BusinessAuthWithAPI() {
         email: 'test@gmail.com',
         phone: '1234567890',
         password: 'amos@9849',
-
         name: 'Guinea Pig Nepal',
         category: 'CAFE',
         website: '',

@@ -1,15 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRouteBusiness = () => {
-    const businessId = localStorage.getItem("businessId");
+const SuperAdminProtectedRoute = () => {
     const superAdminToken = localStorage.getItem("superAdminToken");
     const superAdmin = localStorage.getItem("superAdmin");
 
-    const authToken = localStorage.getItem("authToken");
-
-    if (!businessId || !authToken) {
-        return <Navigate to="/" replace />;
-    }
 
     if (!superAdminToken || !superAdmin) {
         return <Navigate to="/superadmin" replace />;
@@ -20,4 +14,4 @@ const ProtectedRouteBusiness = () => {
     return <Outlet />;
 };
 
-export default ProtectedRouteBusiness;
+export default SuperAdminProtectedRoute;
