@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Sidebar from "../component/layout/Sidebar";
 import MobileSidebar from "../component/layout/mobilesidebar";
 import Header from "../component/layout/header";
-import BusinessHome from "../component/business/businessHome";
 import { Outlet, useNavigate } from "react-router-dom";
 
 
