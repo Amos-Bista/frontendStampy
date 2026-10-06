@@ -45,7 +45,7 @@ export default function OffersTable() {
 
         // Navigate passing both businessId and the selected offer _id
         // (Adjust the path to match your route definition: e.g. /OfferQR/:businessId/:id)
-        navigate(`/dashboard/OfferQR/${businessId}/${selectedOfferId}`, { state: { offerId: selectedOfferId } });
+        navigate(`/admin/OfferQR/${businessId}/${selectedOfferId}`, { state: { offerId: selectedOfferId } });
     };
 
 
