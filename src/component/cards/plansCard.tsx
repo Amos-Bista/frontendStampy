@@ -88,7 +88,7 @@ const PlansCard = () => {
             const token = localStorage.getItem("superAdminToken");
 
             const response = await fetch(
-                `${API_URL}${token ? "/api/v1/subscriptions/plans/get/" : "/api/v1/subscriptions/plans/get/website"}`,
+                `${API_URL}/api/v1/subscriptions/plans/get/website`,
                 {
                     method: "GET",
                     headers: {
