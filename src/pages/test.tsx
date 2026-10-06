@@ -1,10 +1,13 @@
-import CreateSubscriptionPlanForm from '../component/form/CreateSubscriptionPlanForm'
-import CreateFeatureForm from '../component/form/createFeatureForm'
+import PlansCard from '../component/cards/plansCard'
 
 const Test = () => {
     return (
-        <div><CreateSubscriptionPlanForm />
-            <CreateFeatureForm /></div>
+        <div>
+            {/* <CreateSubscriptionPlanForm /> */}
+            {/* <CreateFeatureForm /> */}
+            {/* <OfferCard /> */}
+            <PlansCard />
+        </div>
     )
 }
 

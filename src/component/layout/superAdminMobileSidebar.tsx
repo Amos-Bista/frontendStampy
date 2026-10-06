@@ -16,9 +16,8 @@ const SuperAdminMobileSidebar = ({
 
     const handleLogout = () => {
         // Clear authentication/session data
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("businessId");
-        localStorage.removeItem("businessUser");
+        localStorage.removeItem("superAdminToken");
+        localStorage.removeItem("superAdmin");
 
         // Close sidebar
         onClose();

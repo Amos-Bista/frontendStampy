@@ -13,6 +13,20 @@ export const navigationSuperAdmin = [
         path: "/superadmin/features",
         icon: LayoutDashboard,
     },
-
+    {
+        title: "Billing Cycle",
+        path: "/superadmin/billingcycle",
+        icon: LayoutDashboard,
+    },
+    {
+        title: "Resources",
+        path: "/superadmin/resources",
+        icon: LayoutDashboard,
+    },
+    {
+        title: "Subscription",
+        path: "/superadmin/subscription",
+        icon: LayoutDashboard,
+    }
 
 ];

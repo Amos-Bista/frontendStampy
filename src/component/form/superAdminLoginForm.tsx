@@ -13,7 +13,6 @@ const SuperAdminLoginForm = () => {
         email: "admin@stampy.com",
         password: "Admin@123456",
     });
-
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -36,24 +35,18 @@ const SuperAdminLoginForm = () => {
         e: React.FormEvent<HTMLFormElement>
     ) => {
         e.preventDefault();
-
         if (!formData.email.trim()) {
             setError("Email or username is required");
             return;
         }
-
         if (!formData.password) {
             setError("Password is required");
             return;
         }
-
         try {
             setLoading(true);
             setError("");
-
-            const API_URL =
-                import.meta.env.VITE_API_URL
-
+            const API_URL = import.meta.env.VITE_API_URL
             const response = await axios.post(
                 `${API_URL}/api/v1/super-admin/auth/login`,
                 {
@@ -62,10 +55,6 @@ const SuperAdminLoginForm = () => {
                 }
             );
 
-            console.log(
-                "SuperAdmin login response:",
-                response.data
-            );
 
             const token =
                 response.data?.data?.token ||
@@ -76,7 +65,6 @@ const SuperAdminLoginForm = () => {
                 response.data?.data?.admin ||
                 response.data?.superAdmin;
 
-            console.log("superAdmin token:", token, admin);
 
             if (!token) {
                 throw new Error(
@@ -192,9 +180,6 @@ const SuperAdminLoginForm = () => {
                                 }
                                 placeholder="Enter your password"
                             />
-
-
-
                             <button
                                 type="button"
                                 onClick={() =>

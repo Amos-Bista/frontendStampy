@@ -1,3 +1,4 @@
+import PlansCard from '../component/cards/plansCard'
 import { FooterSection } from '../component/layout/footer/FooterSection'
 import HeroSection from '../component/layout/home/heroSection'
 import LoyaltyStatsSection from '../component/layout/home/loyaltySection/LoyaltyStatsSection'
@@ -8,6 +9,7 @@ const Home = () => {
         <div>
             <HeroSection />
             <main className="flex-1">
+                <PlansCard />
                 <LoyaltyStatsSection />
                 <WhyStampMeSection />
             </main>

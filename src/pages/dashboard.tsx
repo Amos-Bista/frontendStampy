@@ -3,7 +3,7 @@ import Sidebar from "../component/layout/Sidebar";
 import MobileSidebar from "../component/layout/mobilesidebar";
 import Header from "../component/layout/header";
 import BusinessHome from "../component/business/businessHome";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 
 const DashboardLayout = () => {
@@ -37,18 +37,12 @@ const DashboardLayout = () => {
 
             <div className="flex flex-1 flex-col overflow-hidden">
 
-                <Header
-                    onMenuClick={() => setOpen(true)}
-                />
+                <Header onMenuClick={() => setOpen(true)} />
 
                 <main className="flex-1 overflow-y-auto p-6">
-
-                    {/* <Outlet /> */}
-                    <BusinessHome />
-
-
+                    <Outlet />
+                    {/* <BusinessHome /> */}
                 </main>
-
             </div>
 
         </div >
