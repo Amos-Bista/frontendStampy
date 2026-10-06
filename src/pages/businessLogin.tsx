@@ -289,7 +289,7 @@ export default function BusinessAuthWithAPI() {
             }
 
 
-            navigate(`/dashboard/${data?.business?._id}`, { replace: true });
+            navigate(`/admnin/dashboard/${data?.business?._id}`, { replace: true });
         } catch (err: any) {
             console.error('Business registration error:', err);
 
@@ -427,7 +427,7 @@ export default function BusinessAuthWithAPI() {
 
             // Go to dashboard
             navigate(
-                `/dashboard/${business._id}`,
+                `/admin/dashboard/${business._id}`,
                 {
                     replace: true,
                 }
